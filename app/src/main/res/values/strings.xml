@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProjectDeadLineTime</string>
+    <string name="new_name_project">New project</string>
+    <string name="history">History</string>
+    <string name="name_test">Name Test</string>
+    <string name="mail">Mail</string>
+    <string name="addTaskList">Add task list</string>
+</resources>
