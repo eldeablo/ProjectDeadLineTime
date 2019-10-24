@@ -19,14 +19,13 @@ import com.example.projectdeadlinetime.Utils;
 
 import java.util.Objects;
 
-import static com.example.projectdeadlinetime.Activity.MainActivity.PERFORM_PROJECT_ACTIVITY;
-
 public class ProjectActivity extends AppCompatActivity {
 
     private LinearLayout listTask;
     private CardView addTask;
 
     private ProjectData data;
+    private int indexData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +41,13 @@ public class ProjectActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(data.getNameProject());
 
-        listTask = findViewById(R.id.listTask);
+        listTask = findViewById(R.id.listSubTaskData);
 
         addTask = findViewById(R.id.addTask);
         addTask.setOnClickListener(touchScreenEvent);
         addTask.getChildAt(0).setOnKeyListener(touchScreenEvent);
 
-        if(Objects.requireNonNull(data).getListTasks().size()>0){
+        if (Objects.requireNonNull(data).getListTasks().size() > 0) {
             loadingData();
         }
     }
@@ -70,8 +69,8 @@ public class ProjectActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent s = new Intent();
-        s.putExtra("projectData",data);
-        setResult(RESULT_OK,s);
+        s.putExtra("projectData", data);
+        setResult(RESULT_OK, s);
         finish();
     }
 
@@ -80,14 +79,18 @@ public class ProjectActivity extends AppCompatActivity {
 
         data.getListTasks().add(new ListTaskData(_nameTask.getText().toString()));
 
-        listTask.addView(new ListTaskView(listTask.getContext(), data), data.getCountTask());
+        listTask.addView(new ListTaskView(listTask.getContext(), data, indexData).getConstraintLayout(), data.getCountTask());
 
         Utils.hideKeyboard(addTask.getChildAt(1), _nameTask, addTask.getContext());
+
+        indexData += 1;
     }
 
-    private void loadingData(){
-        for(int i =0;i<data.getListTasks().size();i++){
-            listTask.addView(new ListTaskView(listTask.getContext(),data),i);
+    private void loadingData() {
+        indexData = data.getListTasks().size();
+
+        for (int i = 0; i < indexData; i++) {
+            listTask.addView(new ListTaskView(listTask.getContext(), data, indexData).getConstraintLayout(), i);
         }
     }
 

@@ -22,4 +22,12 @@ public class ListTaskData implements Serializable {
     public int getSubTasks() {
         return subTasksList.size();
     }
+
+    public List<SubTasksData> getSubTasksList() {
+        return subTasksList;
+    }
+
+    public int getCountSubTaskList() {
+        return subTasksList.size() - 1;
+    }
 }
