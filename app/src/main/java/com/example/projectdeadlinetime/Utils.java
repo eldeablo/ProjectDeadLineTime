@@ -16,31 +16,55 @@ public class Utils {
      */
     public static void showKeyboard(View visibleComponent, EditText textEditor, Context context) {
         if (visibleComponent != null) {
-            visibleComponent.setVisibility(View.INVISIBLE);
+            hideComponent(visibleComponent);
         }
-        textEditor.setVisibility(View.VISIBLE);
+        showComponent(textEditor);
         textEditor.requestFocus();
-        InputMethodManager _imm = (InputMethodManager) context.getSystemService(context.INPUT_METHOD_SERVICE);
+        InputMethodManager _imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         _imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
         textEditor.setText("");
     }
 
     /**
-     * hide keyboard
+     * Hide keyboard
      */
     public static void hideKeyboard(View visibleComponent, EditText textEditor, Context context) {
         if (visibleComponent != null) {
-            visibleComponent.setVisibility(View.VISIBLE);
+            showComponent(visibleComponent);
         }
-        textEditor.setVisibility(View.INVISIBLE);
+        hideComponent(textEditor);
         textEditor.clearFocus();
         InputMethodManager _imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         _imm.hideSoftInputFromWindow(textEditor.getWindowToken(), 0);
     }
 
-    public static int getDataIsList(List<ProjectData> dataList,ProjectData projectData){
-        for(int i =0;i<dataList.size();i++){
-            if(dataList.contains(projectData)){
+    /**
+     * Show view component
+     *
+     * @param view get component
+     */
+    public static void showComponent(View view) {
+        view.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Hide view component
+     *
+     * @param view get component
+     */
+    public static void hideComponent(View view) {
+        view.setVisibility(View.INVISIBLE);
+    }
+
+    /**
+     * Get data is list data
+     *
+     * @param dataList    array data
+     * @param projectData get data find
+     */
+    public static int getDataIsList(List<ProjectData> dataList, ProjectData projectData) {
+        for (int i = 0; i < dataList.size(); i++) {
+            if (dataList.contains(projectData)) {
                 return i;
             }
         }

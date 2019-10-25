@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText nameProject;
 
     private History history;
-
     private List<ProjectData> projectDataList;
 
 

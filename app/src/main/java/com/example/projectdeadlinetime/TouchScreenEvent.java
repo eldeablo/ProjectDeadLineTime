@@ -39,6 +39,10 @@ public class TouchScreenEvent implements View.OnClickListener, View.OnKeyListene
                 Utils.showKeyboard(_listTaskView.getNameTask(),_listTaskView.getNameSubTask(),_listTaskView.getRootView().getContext());
                 break;
             }
+            case R.id.subTaskCard:{
+                System.out.println("Enable");
+                break;
+            }
         }
     }
 

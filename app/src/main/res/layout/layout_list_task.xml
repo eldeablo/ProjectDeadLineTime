@@ -47,8 +47,8 @@
         <LinearLayout
             android:id="@+id/listSubTaskData"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="vertical" />
+            android:layout_height="150dp"
+            android:orientation="vertical"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

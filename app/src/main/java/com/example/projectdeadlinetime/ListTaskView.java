@@ -69,16 +69,11 @@ public class ListTaskView extends AppCompatActivity {
         listSubTask.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         int i = data.getListTasks().get(index).getSubTasksList().size();
-        System.out.println(nameSubTask.getText().toString());
 
         data.getListTasks().get(index).getSubTasksList().add(new SubTasksData(nameSubTask.getText().toString()));
 
         listSubTask.addView(new ListSubTaskView(listSubTask.getContext(), data.getListTasks().get(index).getSubTasksList().get(i)).getConstraintLayout(), data.getListTasks().get(index).getCountSubTaskList());
         Utils.hideKeyboard(addSubTaskList, nameSubTask, listSubTask.getContext());
-    }
-
-    public LinearLayout getListSubTask() {
-        return listSubTask;
     }
 
     public EditText getNameSubTask() {
@@ -87,10 +82,6 @@ public class ListTaskView extends AppCompatActivity {
 
     public TextView getNameTask() {
         return addSubTaskList;
-    }
-
-    public int getIndex() {
-        return index;
     }
 
     public CardView getRootView() {
