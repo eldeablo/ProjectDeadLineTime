@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.example.projectdeadlinetime.Activity.MainActivity;
 import com.example.projectdeadlinetime.Activity.ProjectActivity;
+import com.example.projectdeadlinetime.Activity.SubTaskActivity;
 import com.example.projectdeadlinetime.Data.ProjectData;
 
 import static com.example.projectdeadlinetime.Activity.MainActivity.PERFORM_PROJECT_ACTIVITY;
@@ -31,8 +32,8 @@ class ActivityIntentUtils {
      * @param data            put Project data
      */
     static void performActionCheckSubTask(ProjectActivity projectActivity, ProjectData data) {
-        perform = new Intent();
-        perform.putExtra("preojectData", data);
+        perform = new Intent(projectActivity, SubTaskActivity.class);
+        perform.putExtra("projectData", data);
         projectActivity.startActivityForResult(perform, PERFORM_SUB_TASK_ACTIVITY);
 
     }

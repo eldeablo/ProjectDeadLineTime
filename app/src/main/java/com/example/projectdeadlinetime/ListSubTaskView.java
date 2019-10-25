@@ -19,7 +19,7 @@ public class ListSubTaskView extends AppCompatActivity {
     private SubTasksData data;
     private ConstraintLayout constraintLayout;
 
-    public ListSubTaskView(Context context, SubTasksData data) {
+    public ListSubTaskView(Context context, SubTasksData data,AppCompatActivity appCompatActivity) {
         this.data = data;
 
         ConstraintLayout.LayoutParams _clp = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -31,9 +31,9 @@ public class ListSubTaskView extends AppCompatActivity {
         View _view = LayoutInflater.from(context).inflate(R.layout.sub_task_data, (ViewGroup) constraintLayout.getRootView(), false);
 
         CardView _subTask = _view.findViewById(R.id.subTaskCard);
-        _subTask.setOnClickListener(new TouchScreenEvent(this));
+        _subTask.setOnClickListener(new TouchScreenEvent(appCompatActivity));
 
-        TextView _nameSubText = _view.findViewById(R.id.nameCheckTask);
+        TextView _nameSubText = _view.findViewById(R.id.nameCheckList);
         _nameSubText.setText(data.getNameSubTask());
 
         constraintLayout.addView(_view);

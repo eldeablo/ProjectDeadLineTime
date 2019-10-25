@@ -29,7 +29,7 @@ public class TouchScreenEvent implements View.OnClickListener, View.OnKeyListene
                 Utils.showKeyboard(null, _mainActivity.getNameProject(), _mainActivity);
                 break;
             }
-            case R.id.addTask: {
+            case R.id.cardProject: {
                 ProjectActivity _projectAct = (ProjectActivity) appCompatActivity;
                 Utils.showKeyboard(_projectAct.getAddTask().getChildAt(1), (EditText) _projectAct.getAddTask().getChildAt(0), _projectAct.getAddTask().getContext());
                 break;
@@ -42,7 +42,6 @@ public class TouchScreenEvent implements View.OnClickListener, View.OnKeyListene
             case R.id.subTaskCard: {
                 ProjectActivity _projectAct = (ProjectActivity) appCompatActivity;
                 ActivityIntentUtils.performActionCheckSubTask(_projectAct, _projectAct.getData());
-                System.out.println("Enable");
                 break;
             }
         }
@@ -61,15 +60,7 @@ public class TouchScreenEvent implements View.OnClickListener, View.OnKeyListene
                     break;
                 }
             }
-            case R.id.nameSubTask: {
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    ProjectActivity _projectAct = (ProjectActivity) appCompatActivity;
-                    _projectAct.addTaskData();
-                    break;
-                }
-
-            }
-            case R.id.nameCheckTask: {
+            case R.id.nameSubTaskData: {
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     ListTaskView _taskView = (ListTaskView) appCompatActivity;
                     _taskView.addSubTask();
@@ -78,7 +69,16 @@ public class TouchScreenEvent implements View.OnClickListener, View.OnKeyListene
 
             }
             default: {
-                System.out.println(id);
+               if(appCompatActivity.equals(MainActivity.class)){
+                   MainActivity mainActivity = (MainActivity)appCompatActivity;
+                   System.out.println("Enable");
+
+               }else{
+                   ProjectActivity _project = (ProjectActivity)appCompatActivity;
+                   _project.addTaskData();
+                   break;
+               }
+
             }
         }
 

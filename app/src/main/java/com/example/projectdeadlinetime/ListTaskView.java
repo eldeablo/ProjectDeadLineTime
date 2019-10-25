@@ -16,7 +16,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.projectdeadlinetime.Data.ProjectData;
 import com.example.projectdeadlinetime.Data.SubTasksData;
 
-@SuppressLint({"ViewConstructor", "Registered"})
+
+@SuppressLint("Registered")
 public class ListTaskView extends AppCompatActivity {
 
     private ProjectData data;
@@ -24,12 +25,14 @@ public class ListTaskView extends AppCompatActivity {
     private LinearLayout listSubTask;
     private EditText nameSubTask;
     private TextView addSubTaskList;
+    private AppCompatActivity getProjectClass;
     private int index;
 
 
-    public ListTaskView(Context context, ProjectData data, int index) {
+    public ListTaskView(Context context, ProjectData data, int index, AppCompatActivity getProjectClass) {
         this.data = data;
         this.index = index;
+        this.getProjectClass = getProjectClass;
 
         ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams(700, ConstraintLayout.LayoutParams.WRAP_CONTENT);
         lp.setMargins(35, 35, 0, 0);
@@ -41,14 +44,8 @@ public class ListTaskView extends AppCompatActivity {
 
         listSubTask = _view.findViewById(R.id.listSubTaskData);
 
-        nameSubTask = _view.findViewById(R.id.nameCheckTask);
+        nameSubTask = _view.findViewById(R.id.nameSubTaskData);
         nameSubTask.setOnKeyListener(new TouchScreenEvent(this));
-
-        if (!(data.getListTasks().get(index).getSubTasksList().size() > 1)) {
-            listSubTask.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 150));
-        } else {
-            listSubTask.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        }
 
 
         TextView _nameTask = _view.findViewById(R.id.nameTask);
@@ -66,13 +63,15 @@ public class ListTaskView extends AppCompatActivity {
     }
 
     public void addSubTask() {
-        listSubTask.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        if (listSubTask.getChildAt(0).getId() == R.id.out) {
+            listSubTask.removeViewAt(0);
+        }
 
         int i = data.getListTasks().get(index).getSubTasksList().size();
 
         data.getListTasks().get(index).getSubTasksList().add(new SubTasksData(nameSubTask.getText().toString()));
 
-        listSubTask.addView(new ListSubTaskView(listSubTask.getContext(), data.getListTasks().get(index).getSubTasksList().get(i)).getConstraintLayout(), data.getListTasks().get(index).getCountSubTaskList());
+        listSubTask.addView(new ListSubTaskView(listSubTask.getContext(), data.getListTasks().get(index).getSubTasksList().get(i), getProjectClass).getConstraintLayout(), data.getListTasks().get(index).getCountSubTaskList());
         Utils.hideKeyboard(addSubTaskList, nameSubTask, listSubTask.getContext());
     }
 

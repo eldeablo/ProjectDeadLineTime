@@ -44,11 +44,24 @@
                 android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-            android:id="@+id/listSubTaskData"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:orientation="vertical"/>
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/listSubTaskData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <include
+                    android:id="@+id/out"
+                    layout="@layout/sub_task_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </ScrollView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -70,7 +83,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/nameCheckTask"
+                android:id="@+id/nameSubTaskData"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"

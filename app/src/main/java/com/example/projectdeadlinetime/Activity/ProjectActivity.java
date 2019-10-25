@@ -43,7 +43,7 @@ public class ProjectActivity extends AppCompatActivity {
 
         listTask = findViewById(R.id.listSubTaskData);
 
-        addTask = findViewById(R.id.addTask);
+        addTask = findViewById(R.id.cardProject);
         addTask.setOnClickListener(touchScreenEvent);
         addTask.getChildAt(0).setOnKeyListener(touchScreenEvent);
 
@@ -79,7 +79,7 @@ public class ProjectActivity extends AppCompatActivity {
 
         data.getListTasks().add(new ListTaskData(_nameTask.getText().toString()));
 
-        listTask.addView(new ListTaskView(listTask.getContext(), data, indexData).getConstraintLayout(), data.getCountTask());
+        listTask.addView(new ListTaskView(listTask.getContext(), data, indexData,this).getConstraintLayout(), data.getCountTask());
 
         Utils.hideKeyboard(addTask.getChildAt(1), _nameTask, addTask.getContext());
 
@@ -90,7 +90,7 @@ public class ProjectActivity extends AppCompatActivity {
         indexData = data.getListTasks().size();
 
         for (int i = 0; i < indexData; i++) {
-            listTask.addView(new ListTaskView(listTask.getContext(), data, indexData).getConstraintLayout(), i);
+            listTask.addView(new ListTaskView(listTask.getContext(), data, indexData,this).getConstraintLayout(), i);
         }
     }
 
