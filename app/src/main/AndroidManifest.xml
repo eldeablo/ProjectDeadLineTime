@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".Activity.MainActivity"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
@@ -20,6 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.ProjectActivity"
+            tools:ignore="InnerclassSeparator">
+
+        </activity>
+        <activity android:name=".Activity.SubTaskActivity"
             tools:ignore="InnerclassSeparator">
 
         </activity>

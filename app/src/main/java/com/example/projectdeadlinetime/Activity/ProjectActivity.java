@@ -97,4 +97,8 @@ public class ProjectActivity extends AppCompatActivity {
     public CardView getAddTask() {
         return addTask;
     }
+
+    public ProjectData getData() {
+        return data;
+    }
 }

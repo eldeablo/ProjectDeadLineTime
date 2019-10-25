@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SubTasksData implements Serializable {
     private String nameSubTask;
-    private List<CheckListTaskData> checkListTasks;
+    private List<CheckSubTaskData> checkListTasks;
 
     public SubTasksData(String nameSubTask) {
         this.nameSubTask = nameSubTask;
@@ -17,22 +17,12 @@ public class SubTasksData implements Serializable {
         return nameSubTask;
     }
 
-    public List<CheckListTaskData> getCheckListTasks() {
+    public List<CheckSubTaskData> getCheckListTasks() {
         return checkListTasks;
     }
 
     public int getCountCheckTask() {
         return checkListTasks.size();
-    }
-
-    public int getCountIsCheckTask() {
-        int countIsClose = 0;
-        for (int i = 0; i < checkListTasks.size(); i++) {
-            if (checkListTasks.get(i).isClose()) {
-                countIsClose++;
-            }
-        }
-        return countIsClose;
     }
 
 

@@ -7,12 +7,33 @@ import com.example.projectdeadlinetime.Activity.ProjectActivity;
 import com.example.projectdeadlinetime.Data.ProjectData;
 
 import static com.example.projectdeadlinetime.Activity.MainActivity.PERFORM_PROJECT_ACTIVITY;
+import static com.example.projectdeadlinetime.Activity.MainActivity.PERFORM_SUB_TASK_ACTIVITY;
 
-public class ActivityIntentUtils {
+class ActivityIntentUtils {
+    private static Intent perform;
 
-    public static void performActionProject(MainActivity mainActivity, ProjectData data) {
-        Intent _performProject = new Intent(mainActivity, ProjectActivity.class);
-        _performProject.putExtra("projectData",data);
-        mainActivity.startActivityForResult(_performProject, PERFORM_PROJECT_ACTIVITY);
+    /**
+     * Perform project
+     *
+     * @param mainActivity get main class
+     * @param data         put data is class projectActivity
+     */
+    static void performActionProject(MainActivity mainActivity, ProjectData data) {
+        perform = new Intent(mainActivity, ProjectActivity.class);
+        perform.putExtra("projectData", data);
+        mainActivity.startActivityForResult(perform, PERFORM_PROJECT_ACTIVITY);
+    }
+
+    /**
+     * Perform CheckSubTask
+     *
+     * @param projectActivity get projectActivity class
+     * @param data            put Project data
+     */
+    static void performActionCheckSubTask(ProjectActivity projectActivity, ProjectData data) {
+        perform = new Intent();
+        perform.putExtra("preojectData", data);
+        projectActivity.startActivityForResult(perform, PERFORM_SUB_TASK_ACTIVITY);
+
     }
 }

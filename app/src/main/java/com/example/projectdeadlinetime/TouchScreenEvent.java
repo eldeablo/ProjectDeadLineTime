@@ -34,12 +34,14 @@ public class TouchScreenEvent implements View.OnClickListener, View.OnKeyListene
                 Utils.showKeyboard(_projectAct.getAddTask().getChildAt(1), (EditText) _projectAct.getAddTask().getChildAt(0), _projectAct.getAddTask().getContext());
                 break;
             }
-            case R.id.addSubTaskList:{
-                ListTaskView _listTaskView = (ListTaskView)appCompatActivity;
-                Utils.showKeyboard(_listTaskView.getNameTask(),_listTaskView.getNameSubTask(),_listTaskView.getRootView().getContext());
+            case R.id.addSubTaskList: {
+                ListTaskView _listTaskView = (ListTaskView) appCompatActivity;
+                Utils.showKeyboard(_listTaskView.getNameTask(), _listTaskView.getNameSubTask(), _listTaskView.getRootView().getContext());
                 break;
             }
-            case R.id.subTaskCard:{
+            case R.id.subTaskCard: {
+                ProjectActivity _projectAct = (ProjectActivity) appCompatActivity;
+                ActivityIntentUtils.performActionCheckSubTask(_projectAct, _projectAct.getData());
                 System.out.println("Enable");
                 break;
             }
@@ -67,7 +69,7 @@ public class TouchScreenEvent implements View.OnClickListener, View.OnKeyListene
                 }
 
             }
-            case R.id.nameCheckTask:{
+            case R.id.nameCheckTask: {
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     ListTaskView _taskView = (ListTaskView) appCompatActivity;
                     _taskView.addSubTask();
