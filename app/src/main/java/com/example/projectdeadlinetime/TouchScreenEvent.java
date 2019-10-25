@@ -36,7 +36,7 @@ public class TouchScreenEvent implements View.OnClickListener, View.OnKeyListene
             }
             case R.id.addSubTaskList:{
                 ListTaskView _listTaskView = (ListTaskView)appCompatActivity;
-                _listTaskView.addSubTask();
+                Utils.showKeyboard(_listTaskView.getNameTask(),_listTaskView.getNameSubTask(),_listTaskView.getRootView().getContext());
                 break;
             }
         }
@@ -59,6 +59,14 @@ public class TouchScreenEvent implements View.OnClickListener, View.OnKeyListene
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     ProjectActivity _projectAct = (ProjectActivity) appCompatActivity;
                     _projectAct.addTaskData();
+                    break;
+                }
+
+            }
+            case R.id.nameCheckTask:{
+                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    ListTaskView _taskView = (ListTaskView) appCompatActivity;
+                    _taskView.addSubTask();
                     break;
                 }
 

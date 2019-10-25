@@ -23,9 +23,9 @@ public class ListSubTaskView extends AppCompatActivity {
 
         constraintLayout = new ConstraintLayout(context);
 
-        View _view = LayoutInflater.from(context).inflate(R.layout.layout_list_subtask, (ViewGroup) constraintLayout.getRootView(), false);
+        View _view = LayoutInflater.from(context).inflate(R.layout.sub_task_data, (ViewGroup) constraintLayout.getRootView(), false);
 
-        TextView _nameSubText = _view.findViewById(R.id.nameSubTask);
+        TextView _nameSubText = _view.findViewById(R.id.nameCheckTask);
         _nameSubText.setText(data.getNameSubTask());
 
         constraintLayout.addView(_view);
